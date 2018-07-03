@@ -93,8 +93,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             center.removeAllPendingNotificationRequests()
         case UNNotificationDefaultActionIdentifier:
             center.removeAllPendingNotificationRequests()
-        case "Snooze":
-            print("Snooze")
+        case "Stop":
+            notifications.stopObserve(category: response.notification.request.content.categoryIdentifier)
         case "Delete":
             print("Delete")
         default:

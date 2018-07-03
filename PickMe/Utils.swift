@@ -22,6 +22,25 @@ class ClosureWrapper: NSObject {
 
 extension Date {
     
+    func day_components() -> Int {
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.weekday, from: self)
+        return weekDay
+    }
+    
+    func hour_components() -> Int {
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.hour, from: self)
+        return weekDay
+    }
+    
+    func minute_components() -> Int {
+        let myCalendar = Calendar(identifier: .gregorian)
+        let weekDay = myCalendar.component(.minute, from: self)
+        return weekDay
+    }
+    
+    
     func getDayOfWeek() -> Int {
         let myCalendar = Calendar(identifier: .gregorian)
         let weekDay = myCalendar.component(.weekday, from: self)

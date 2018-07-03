@@ -22,6 +22,6 @@ pod 'TimelineTableViewCell'
 pod 'DatePickerDialog'
 pod 'GrowingTextView'
 pod 'MBProgressHUD'
-pod 'FoldingTabBar'
+pod 'BarcodeScanner'
 
 end

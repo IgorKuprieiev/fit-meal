@@ -10,14 +10,9 @@ import UIKit
 import FirebaseDatabase
 import FirebaseStorage
 import TimelineTableViewCell
+import MBProgressHUD
 
-let WeekDays = [1 : "Sunday",
-                2 : "Monday",
-                3 : "Tuesday",
-                4 : "Wednesday",
-                5 : "Thursday",
-                6 : "Friday",
-                7 : "Saturday"]
+
 
 
 class MealViewController: UIViewController {
@@ -29,9 +24,123 @@ class MealViewController: UIViewController {
     var week: [MealDay]!
     var day: MealDay?
     
+    private func setup_database_connection() -> Void {
+        //Here actually we aply some data to the ref member - later on it should be done from the outside 
+        
+        let meal = remotedatabase.ref.child("Meal")
+        db_ref = meal.child("J4LDgqpCMcSGuaQFmofHM9gz48Z2")
+        
+        week = [MealDay]()
+        
+        
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.label.numberOfLines = 0
+        hud.label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        hud.label.text = "fetching meal plan"
+        
+        db_ref.observeSingleEvent(of: DataEventType.value, with: { (snap) in
+            self.week.removeAll()
+            if let days = snap.value as? [Any] {
+                for key in days {
+                    print(key)
+                    if let day_info = key as? [String : Any] {
+                        let meal_day = MealDay.init(node: day_info)
+                        self.week.append(meal_day)
+                        self.header?.showToday()
+                    }
+                }
+                hud.hide(animated: true, afterDelay: 1.5)
+            }
+            self.start_observe(ref: self.db_ref)
+        })
+        
+        
+//        //If smb would like to add some day
+//        db_ref.observe(DataEventType.childAdded, with: { (snap) in
+//            if let day_info = snap.value as? [String : Any] {
+//                let updated_day = MealDay.init(node: day_info)
+//                self.update(meal_day: updated_day, to_remove: false)
+//                self.popup_info(message: String.init(format: "meal plan for %@\rhas been added", updated_day.day_title))
+//            }
+//        })
+//        
+//        //For sure for removeing as well
+//        db_ref.observe(DataEventType.childRemoved, with: { (snap) in
+//            if let day_info = snap.value as? [String : Any] {
+//                let updated_day = MealDay.init(node: day_info)
+//                self.update(meal_day: updated_day, to_remove: true)
+//                self.popup_info(message: String.init(format: "meal plan for %@\rhas been removed", updated_day.day_title))
+//            }
+//        })
+    }
+    
+    
+    private func popup_info(message: String) -> Void {
+        let hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud.label.numberOfLines = 0
+        hud.label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        hud.label.text = message
+        hud.hide(animated: true, afterDelay: 1.5)
+    }
+    
+    
+    private func observe_meal_changes(meal_plan: MealDay, parent_ref: DatabaseReference) -> Void {
+        let meal_ref = parent_ref.child("\(meal_plan.day)" + "/meals")
+        meal_ref.observe(DataEventType.value, with: { (snap) in
+            meal_plan.update(meals: snap.value)
+        })
+        week.append(meal_plan)
+    }
+    
+    
+    
+    
+    private func start_observe(ref: DatabaseReference) -> Void {
+        ref.observe(DataEventType.childChanged, with: { (snap) in
+            if let day_info = snap.value as? [String : Any] {
+                let updated_day = MealDay.init(node: day_info)
+                self.update(meal_day: updated_day, to_remove: false)
+                self.popup_info(message: String.init(format: "meal plan for %@\rhas been updated", updated_day.day_title))
+            }
+        })
+    }
+    
+    
+    private func update(meal_day: MealDay, to_remove: Bool) -> Void {
+        var exist = false
+        var remove_index = 0
+        for meal in week {
+            if meal.day == meal_day.day{
+                exist = true
+                meal.update(meal_day: meal_day)
+                if meal == day {
+                    if to_remove {
+                        day = nil
+                    }
+                    table?.reloadData()
+                }
+            }
+            remove_index = remove_index + 1
+        }
+        
+        if to_remove,
+            remove_index < week.count{
+            week.remove(at: remove_index)
+        }
+        
+        if !exist {
+            week.append(meal_day)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        setup_database_connection()
+        
         if let meal_header = header {
+            meal_header.delegate = self
             meal_header.addShadow()
             meal_header.addGradient(top: UIColor(red: 213/255, green: 173/255, blue: 230/255, alpha: 1),
                                bot: UIColor(red: 162/255, green: 147/255, blue: 230/255, alpha: 1))
@@ -65,6 +174,10 @@ class MealViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let navigation = self.navigationController {
+            navigation .setNavigationBarHidden(true, animated: true)
+        }
+        
         header?.showToday()
     }
     
@@ -78,13 +191,40 @@ class MealViewController: UIViewController {
 
 extension MealViewController : MealHeaderDelegate{
     
-    func header(selectDay: Int) {
-        
+    func header(notify: Bool) {
+        if let meal_day = self.day{
+            if notify {
+                notifications.startObserve(day: meal_day)
+            }else{
+                notifications.stopObserve(day: meal_day)
+            }
+            
+            let ref = db_ref.child("\( meal_day.day)/notify")
+            ref.setValue(notify, withCompletionBlock: { (err, snap_ref) in
+                if err != nil {
+                    
+                }
+            })
+        }
     }
+
+    func header(selectDay: Int) -> Bool {
+        day = nil
+        for item in week {
+            if item.day == selectDay {
+                day = item
+                table?.reloadData()
+                return item.notify
+            }
+        }
+        return false
+    }
+
     
     func header(openSettings: UIButton?) {
         
     }
+    
 }
 
 
@@ -109,39 +249,38 @@ extension MealViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineTableViewCell", for: indexPath) as! TimelineTableViewCell
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
-//        let point = schedule.points[indexPath.row]
-//        cell.timelinePoint = point.readPoint
-//        cell.bubbleColor = UIColor.red
-//        
-//        //Update colors
-//        var timelineFrontColor = UIColor.clear
-//        if (indexPath.row > 0) {
-//            let prev_point = schedule.points[indexPath.row - 1]
-//            timelineFrontColor = prev_point.readColor
-//        }
-//        cell.timeline.frontColor = timelineFrontColor
-//        
-//        var timeLineBackColor = UIColor.clear
-//        if (indexPath.row < schedule.points.count - 1) {
-//            timeLineBackColor = point.readColor
-//        }
-//        cell.timeline.backColor = timeLineBackColor
-//        
-//        //Put values
-//        cell.titleLabel.text = point.readTime
-//        cell.descriptionLabel.text = point.readMeal
-//        cell.descriptionLabel.textColor = UIColor.darkGray
-//        if indexPath.row + 1 < schedule.points.count {
-//            let next_point = schedule.points[indexPath.row + 1]
-//            point.calculateNextMeal(date: next_point.time)
-//        }
-//        
-//        cell.lineInfoLabel.text = point.readTimeToNextMeal
-//        if let thumbnail = point.icon {
-//            cell.thumbnailImageView.image = UIImage(named: thumbnail)
-//        }
         
+        if let items = self.day?.meals {
+            let meal = items[indexPath.row]
+            cell.timelinePoint = TimelinePoint()
+            cell.titleLabel.text = meal.time
+            cell.descriptionLabel.text = meal.content
+            
+            var timelineFrontColor = UIColor.clear
+            if indexPath.row > 0 {
+                timelineFrontColor = UIColor.darkGray
+            }
+            cell.timeline.frontColor = timelineFrontColor
+            
+            
+            var timeLineBackColor = UIColor.clear
+            if (indexPath.row < items.count - 1) {
+                timeLineBackColor = UIColor.darkGray
+            }
+            cell.timeline.backColor = timeLineBackColor
+        }
         return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let items = self.day?.meals,
+            let navigation = self.navigationController {
+            let meal = items[indexPath.row]
+            if let details = storyboard?.instantiateViewController(withIdentifier: "MealDetailsViewController") as? MealDetailsViewController {
+                navigation.pushViewController(details, animated: true)
+            }
+        }
     }
 }
 

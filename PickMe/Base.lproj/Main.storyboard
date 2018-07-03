@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pwg-Qd-39K">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="pwg-Qd-39K">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -247,6 +247,7 @@
                         <segue destination="8yJ-H3-cw2" kind="relationship" relationship="viewControllers" id="kSQ-wX-HQ4"/>
                         <segue destination="OSl-UG-Hvn" kind="relationship" relationship="viewControllers" id="WWV-SR-qy9"/>
                         <segue destination="wAU-l9-LhI" kind="relationship" relationship="viewControllers" id="nyc-a7-13c"/>
+                        <segue destination="iby-Nc-VWH" kind="relationship" relationship="viewControllers" id="jVS-ZT-zx6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JfA-eH-yXS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -934,7 +935,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6J7-gf-JQX">
-                                <rect key="frame" x="0.0" y="169" width="375" height="449"/>
+                                <rect key="frame" x="0.0" y="173" width="375" height="445"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="OSl-UG-Hvn" id="7jJ-Yc-4RW"/>
@@ -942,16 +943,16 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1bS-74-Duf" customClass="MealHeaderView" customModule="PickMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="193"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cte-vh-Sum" customClass="BackgroundView" customModule="PickMe" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="173"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iD2-Lq-qaP">
-                                                <rect key="frame" x="25" y="110" width="46.5" height="34"/>
+                                                <rect key="frame" x="25" y="134" width="46.5" height="34"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="S">
+                                                <state key="normal" title="Sun">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected">
@@ -965,7 +966,7 @@
                                                 <rect key="frame" x="71.5" y="110" width="46" height="34"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="M">
+                                                <state key="normal" title="Mon">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected">
@@ -976,10 +977,10 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yA-hj-Ebs">
-                                                <rect key="frame" x="117.5" y="110" width="46.5" height="34"/>
+                                                <rect key="frame" x="117.5" y="134" width="46.5" height="34"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="T">
+                                                <state key="normal" title="Tue">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected">
@@ -993,7 +994,7 @@
                                                 <rect key="frame" x="164" y="110" width="47" height="34"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="W">
+                                                <state key="normal" title="Wen">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected">
@@ -1004,10 +1005,10 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Po-w0-tSk">
-                                                <rect key="frame" x="211" y="110" width="46.5" height="34"/>
+                                                <rect key="frame" x="211" y="134" width="46.5" height="34"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="T">
+                                                <state key="normal" title="Thu">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected">
@@ -1021,7 +1022,7 @@
                                                 <rect key="frame" x="257.5" y="110" width="46" height="34"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="F">
+                                                <state key="normal" title="Fri">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected">
@@ -1032,10 +1033,10 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coQ-LJ-YIY">
-                                                <rect key="frame" x="303.5" y="110" width="46.5" height="34"/>
+                                                <rect key="frame" x="303.5" y="134" width="46.5" height="34"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                <state key="normal" title="S">
+                                                <state key="normal" title="Sat">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <state key="selected">
@@ -1135,33 +1136,43 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuG-GU-mHl">
+                                                <rect key="frame" x="10" y="26.5" width="32" height="32"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="notify_off"/>
+                                                <connections>
+                                                    <action selector="didSelectNotifyWithSender:" destination="1bS-74-Duf" eventType="touchUpInside" id="Mgs-0h-D0R"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.63471309559785771" green="0.5776997230266574" blue="0.90268083761269025" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="2yA-hj-Ebs" firstAttribute="width" secondItem="zbJ-IS-4KK" secondAttribute="width" id="0ay-3e-iWA"/>
                                             <constraint firstItem="Bms-6e-nay" firstAttribute="centerX" secondItem="cTn-cY-dEx" secondAttribute="centerX" id="3Hg-FV-03Q"/>
+                                            <constraint firstItem="uuG-GU-mHl" firstAttribute="leading" secondItem="Cte-vh-Sum" secondAttribute="leading" constant="10" id="3Tk-Jm-CrJ"/>
                                             <constraint firstItem="coQ-LJ-YIY" firstAttribute="width" secondItem="cTn-cY-dEx" secondAttribute="width" id="435-Wd-C4W"/>
+                                            <constraint firstItem="coQ-LJ-YIY" firstAttribute="centerY" secondItem="4Po-w0-tSk" secondAttribute="centerY" id="4aG-t6-802"/>
                                             <constraint firstItem="cTn-cY-dEx" firstAttribute="width" secondItem="4Po-w0-tSk" secondAttribute="width" id="5Mq-gJ-H2f"/>
+                                            <constraint firstItem="cTn-cY-dEx" firstAttribute="centerY" secondItem="zbJ-IS-4KK" secondAttribute="centerY" id="64w-0s-GPE"/>
                                             <constraint firstItem="Hk0-6f-ysv" firstAttribute="centerY" secondItem="PYM-rZ-DYh" secondAttribute="centerY" id="9XO-gr-X3R"/>
                                             <constraint firstAttribute="trailing" secondItem="PYM-rZ-DYh" secondAttribute="trailing" constant="10" id="AF1-IG-vDV"/>
-                                            <constraint firstItem="2yA-hj-Ebs" firstAttribute="centerY" secondItem="zbJ-IS-4KK" secondAttribute="centerY" id="BjE-tp-ngk"/>
                                             <constraint firstItem="zbJ-IS-4KK" firstAttribute="leading" secondItem="2yA-hj-Ebs" secondAttribute="trailing" id="CHV-Rp-Mej"/>
                                             <constraint firstItem="iD2-Lq-qaP" firstAttribute="leading" secondItem="Cte-vh-Sum" secondAttribute="leading" constant="25" id="CkT-F3-ysH"/>
-                                            <constraint firstItem="coQ-LJ-YIY" firstAttribute="centerY" secondItem="cTn-cY-dEx" secondAttribute="centerY" id="HK0-Pa-Z4F"/>
-                                            <constraint firstItem="xEV-xc-Ngc" firstAttribute="centerY" secondItem="2yA-hj-Ebs" secondAttribute="centerY" id="HQQ-rT-hyE"/>
+                                            <constraint firstItem="4Po-w0-tSk" firstAttribute="centerY" secondItem="2yA-hj-Ebs" secondAttribute="centerY" id="INp-Uw-apX"/>
+                                            <constraint firstItem="2yA-hj-Ebs" firstAttribute="centerY" secondItem="iD2-Lq-qaP" secondAttribute="centerY" id="JzX-EP-98I"/>
+                                            <constraint firstItem="xEV-xc-Ngc" firstAttribute="top" secondItem="Lgf-h6-wVA" secondAttribute="bottom" constant="5" id="NJK-ib-AXS"/>
                                             <constraint firstItem="coQ-LJ-YIY" firstAttribute="leading" secondItem="cTn-cY-dEx" secondAttribute="trailing" id="RcW-f1-mrB"/>
                                             <constraint firstItem="PYM-rZ-DYh" firstAttribute="top" secondItem="Cte-vh-Sum" secondAttribute="top" constant="30" id="Uuu-lD-OaB"/>
-                                            <constraint firstItem="4Po-w0-tSk" firstAttribute="centerY" secondItem="zbJ-IS-4KK" secondAttribute="centerY" id="Xdc-sd-qos"/>
                                             <constraint firstItem="xEV-xc-Ngc" firstAttribute="leading" secondItem="iD2-Lq-qaP" secondAttribute="trailing" id="ZmS-4d-g4L"/>
                                             <constraint firstItem="cTn-cY-dEx" firstAttribute="leading" secondItem="4Po-w0-tSk" secondAttribute="trailing" id="biJ-k0-aw3"/>
                                             <constraint firstItem="2yA-hj-Ebs" firstAttribute="leading" secondItem="xEV-xc-Ngc" secondAttribute="trailing" id="e4v-py-onR"/>
+                                            <constraint firstItem="iD2-Lq-qaP" firstAttribute="top" secondItem="xEV-xc-Ngc" secondAttribute="bottom" constant="-10" id="eNr-Sc-asl"/>
                                             <constraint firstItem="Lgf-h6-wVA" firstAttribute="leading" secondItem="iD2-Lq-qaP" secondAttribute="leading" id="ex1-cv-Abx"/>
+                                            <constraint firstAttribute="bottom" secondItem="iD2-Lq-qaP" secondAttribute="bottom" constant="5" id="frt-Av-UOn"/>
                                             <constraint firstItem="Lgf-h6-wVA" firstAttribute="trailing" secondItem="coQ-LJ-YIY" secondAttribute="trailing" id="g3s-Em-Z6g"/>
+                                            <constraint firstItem="uuG-GU-mHl" firstAttribute="centerY" secondItem="PYM-rZ-DYh" secondAttribute="centerY" id="gJN-gV-Wb3"/>
                                             <constraint firstItem="joI-QG-LB9" firstAttribute="centerX" secondItem="xEV-xc-Ngc" secondAttribute="centerX" id="hgX-kC-MNg"/>
-                                            <constraint firstItem="4Po-w0-tSk" firstAttribute="top" secondItem="Lgf-h6-wVA" secondAttribute="bottom" constant="5" id="htZ-BF-6dp"/>
                                             <constraint firstItem="MXR-ir-PIA" firstAttribute="centerX" secondItem="4Po-w0-tSk" secondAttribute="centerX" id="jMY-qU-UN0"/>
-                                            <constraint firstAttribute="bottom" secondItem="zbJ-IS-4KK" secondAttribute="bottom" constant="5" id="kjq-Q1-DgN"/>
-                                            <constraint firstItem="cTn-cY-dEx" firstAttribute="centerY" secondItem="4Po-w0-tSk" secondAttribute="centerY" id="lar-mv-v9j"/>
                                             <constraint firstAttribute="trailing" secondItem="coQ-LJ-YIY" secondAttribute="trailing" constant="25" id="lp4-6W-Y9y"/>
                                             <constraint firstItem="NtC-3h-Ljw" firstAttribute="centerX" secondItem="coQ-LJ-YIY" secondAttribute="centerX" id="m8e-zA-Ezk"/>
                                             <constraint firstItem="Lgf-h6-wVA" firstAttribute="top" secondItem="PYM-rZ-DYh" secondAttribute="bottom" constant="10" id="nf5-nA-qKs"/>
@@ -1169,11 +1180,11 @@
                                             <constraint firstItem="xEV-xc-Ngc" firstAttribute="width" secondItem="2yA-hj-Ebs" secondAttribute="width" id="ptR-jy-Inm"/>
                                             <constraint firstItem="Hk0-6f-ysv" firstAttribute="centerX" secondItem="Lgf-h6-wVA" secondAttribute="centerX" id="qUa-Bh-3ND"/>
                                             <constraint firstItem="iD2-Lq-qaP" firstAttribute="width" secondItem="coQ-LJ-YIY" secondAttribute="width" id="rAp-az-66a"/>
+                                            <constraint firstItem="zbJ-IS-4KK" firstAttribute="centerY" secondItem="xEV-xc-Ngc" secondAttribute="centerY" id="tLE-Pc-AYr"/>
                                             <constraint firstItem="4Po-w0-tSk" firstAttribute="leading" secondItem="zbJ-IS-4KK" secondAttribute="trailing" id="waC-uq-Lfj"/>
                                             <constraint firstItem="BJF-mr-itq" firstAttribute="centerX" secondItem="2yA-hj-Ebs" secondAttribute="centerX" id="y5j-ib-IKM"/>
                                             <constraint firstItem="YYU-IA-lFb" firstAttribute="centerX" secondItem="iD2-Lq-qaP" secondAttribute="centerX" id="yMj-01-lhF"/>
                                             <constraint firstItem="XjJ-FN-6Q9" firstAttribute="centerX" secondItem="zbJ-IS-4KK" secondAttribute="centerX" id="ytZ-4w-pYW"/>
-                                            <constraint firstItem="iD2-Lq-qaP" firstAttribute="centerY" secondItem="xEV-xc-Ngc" secondAttribute="centerY" id="zpa-nV-P2Q"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1187,7 +1198,9 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="background" destination="Cte-vh-Sum" id="x1W-Ty-Geg"/>
+                                    <outlet property="notify_button" destination="uuG-GU-mHl" id="0JO-II-NRU"/>
                                     <outlet property="rounded_background" destination="Lgf-h6-wVA" id="7or-x7-nw3"/>
+                                    <outlet property="settings_button" destination="PYM-rZ-DYh" id="hB5-rG-K7T"/>
                                     <outlet property="title" destination="Hk0-6f-ysv" id="wu6-Hr-LTR"/>
                                     <outletCollection property="days_buttons" destination="iD2-Lq-qaP" collectionClass="NSMutableArray" id="mw0-qM-qn1"/>
                                     <outletCollection property="days_buttons" destination="xEV-xc-Ngc" collectionClass="NSMutableArray" id="Txb-20-3JY"/>
@@ -1204,13 +1217,14 @@
                             <constraint firstItem="6J7-gf-JQX" firstAttribute="leading" secondItem="0uH-4w-sSo" secondAttribute="leading" id="FxL-EQ-E2p"/>
                             <constraint firstAttribute="trailing" secondItem="1bS-74-Duf" secondAttribute="trailing" id="MVN-lH-h08"/>
                             <constraint firstAttribute="trailing" secondItem="6J7-gf-JQX" secondAttribute="trailing" id="OdI-vm-Iqc"/>
-                            <constraint firstItem="6J7-gf-JQX" firstAttribute="top" secondItem="1bS-74-Duf" secondAttribute="bottom" id="OjV-dU-SpD"/>
+                            <constraint firstItem="6J7-gf-JQX" firstAttribute="top" secondItem="1bS-74-Duf" secondAttribute="bottom" constant="-20" id="OjV-dU-SpD"/>
                             <constraint firstItem="I6r-EX-FcD" firstAttribute="top" secondItem="6J7-gf-JQX" secondAttribute="bottom" id="pSH-O1-iZO"/>
                             <constraint firstItem="1bS-74-Duf" firstAttribute="leading" secondItem="0uH-4w-sSo" secondAttribute="leading" id="rDl-qL-8oE"/>
                             <constraint firstItem="1bS-74-Duf" firstAttribute="top" secondItem="0uH-4w-sSo" secondAttribute="top" id="uVc-oO-E6w"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="meal" image="meal_icon" id="0Ss-dr-hYU"/>
+                    <navigationItem key="navigationItem" id="oaB-jP-YcV"/>
                     <connections>
                         <outlet property="header" destination="1bS-74-Duf" id="Eu3-j3-V4b"/>
                         <outlet property="table" destination="6J7-gf-JQX" id="l66-mS-BKG"/>
@@ -1219,6 +1233,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAc-a3-Iby" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1391.2" y="300.89955022488761"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="U9I-80-JJM">
+            <objects>
+                <navigationController id="iby-Nc-VWH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="xPH-03-PEH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mjX-8O-BBJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OSl-UG-Hvn" kind="relationship" relationship="rootViewController" id="6ZT-OA-ZCC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hKZ-PW-lqZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-617" y="301"/>
+        </scene>
+        <!--Meal Details View Controller-->
+        <scene sceneID="q4O-46-AiO">
+            <objects>
+                <viewController storyboardIdentifier="MealDetailsViewController" id="i07-ul-vOD" customClass="MealDetailsViewController" customModule="PickMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="BcR-dD-BuI"/>
+                        <viewControllerLayoutGuide type="bottom" id="uet-8Q-Z8g"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Aur-hh-6Td">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kEH-Px-QEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="190" y="310"/>
         </scene>
         <!--food-->
         <scene sceneID="1Jv-oH-aCw">
@@ -1333,9 +1382,13 @@
         <image name="dot_icon" width="12" height="12"/>
         <image name="logo_black" width="192" height="143"/>
         <image name="meal_icon" width="25" height="25"/>
+        <image name="notify_off" width="32" height="32"/>
         <image name="profile_icon" width="25" height="25"/>
         <image name="save_icon" width="25" height="25"/>
         <image name="setting" width="25" height="25"/>
         <image name="upload" width="100" height="100"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="WWV-SR-qy9"/>
+    </inferredMetricsTieBreakers>
 </document>

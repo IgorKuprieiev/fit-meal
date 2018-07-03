@@ -9,14 +9,17 @@
 import UIKit
 
 protocol MealHeaderDelegate {
-    func header(selectDay: Int) -> Void
+    func header(selectDay: Int) -> Bool
     func header(openSettings: UIButton?) -> Void
+    func header(notify: Bool) -> Void
 }
 
 
 class MealHeaderView: UIView {
     
     var delegate: MealHeaderDelegate?
+    
+    var notifications_on: Bool = false
     
     //Title of meal day
     @IBOutlet weak var title: UILabel?
@@ -30,6 +33,13 @@ class MealHeaderView: UIView {
     //Days to interact with
     @IBOutlet var days_buttons: [UIButton]?
     
+    //Top right item
+    @IBOutlet var settings_button: UIButton?
+    
+    //Top left item
+    @IBOutlet var notify_button: UIButton?
+    
+    
     override var bounds: CGRect {
         didSet {
             if let rounded = self.rounded_background {
@@ -38,7 +48,7 @@ class MealHeaderView: UIView {
             
             if let days = self.days_buttons {
                 for day in days {
-                    day.layer.cornerRadius = day.bounds.height/2
+                    day.layer.cornerRadius = day.bounds.height/4
                 }
             }
         }
@@ -61,6 +71,17 @@ class MealHeaderView: UIView {
         }
     }
     
+    private func updateNotifications() -> Void {
+        var img = "notify_off"
+        var color = UIColor.white
+        if notifications_on {
+            img = "notify_on"
+            color = UIColor.orange
+        }
+        self.notify_button?.setImage(UIImage.init(named: img), for: UIControlState.normal)
+        self.notify_button?.tintColor = color
+    }
+    
     
     private func isToday(week_day: Int) -> Bool {
         let today_day = Date().getDayOfWeek()
@@ -69,6 +90,7 @@ class MealHeaderView: UIView {
     
     
     private func selectDay(week_day: Int) -> UIButton? {
+        notifications_on = false
         var button: UIButton?
         var day_value = "Today"
         if let days = self.days_buttons {
@@ -77,7 +99,7 @@ class MealHeaderView: UIView {
                 day.isSelected = result
                 if result {
                     if let responder = self.delegate {
-                        responder.header(selectDay: week_day)
+                        notifications_on = responder.header(selectDay: week_day)
                     }
                     button = day
                     if !isToday(week_day: week_day){
@@ -88,6 +110,7 @@ class MealHeaderView: UIView {
                 }
             }
         }
+        self.updateNotifications()
         self.title?.text = String.init(format: "%@'s meal", day_value)
         return button
     }
@@ -101,6 +124,14 @@ class MealHeaderView: UIView {
     @IBAction func didSelectSettings(sender: UIButton) -> Void {
         if let responder = self.delegate {
             responder.header(openSettings: sender)
+        }
+    }
+    
+    @IBAction func didSelectNotify(sender: UIButton) -> Void {
+        notifications_on = !notifications_on
+        updateNotifications()
+        if let responder = self.delegate {
+            responder.header(notify: notifications_on)
         }
     }
 }

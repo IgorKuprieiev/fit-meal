@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		169FD0A10C767511AF2E0B48 /* Pods_PickMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD42B5D1CFF118D44D6F705 /* Pods_PickMe.framework */; };
+		6B20F91D1F62EC0200CF0DD0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B20F91C1F62EC0200CF0DD0 /* NotificationManager.swift */; };
 		6B2C2E331F5A9DAD0049CCBC /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2C2E321F5A9DAD0049CCBC /* FoodViewController.swift */; };
+		6B34E34F1F7561D50018A640 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E34E1F7561D50018A640 /* Product.swift */; };
+		6B34E3511F756A960018A640 /* MealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B34E3501F756A960018A640 /* MealDetailsViewController.swift */; };
 		6B401FC91F5E83C200FAAF12 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B401FC81F5E83C200FAAF12 /* NetworkManager.swift */; };
 		6B401FCB1F5E845E00FAAF12 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B401FCA1F5E845E00FAAF12 /* Database.swift */; };
 		6B401FCE1F5E85BD00FAAF12 /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B401FCD1F5E85BD00FAAF12 /* ProfileManager.swift */; };
@@ -51,7 +54,10 @@
 		0FD42B5D1CFF118D44D6F705 /* Pods_PickMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PickMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D01B6A3A6002060ED79D518 /* Pods-PickMe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PickMe/Pods-PickMe.debug.xcconfig"; sourceTree = "<group>"; };
 		588058AB037B65F29CA5396C /* Pods-PickMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PickMe.release.xcconfig"; path = "Pods/Target Support Files/Pods-PickMe/Pods-PickMe.release.xcconfig"; sourceTree = "<group>"; };
+		6B20F91C1F62EC0200CF0DD0 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		6B2C2E321F5A9DAD0049CCBC /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		6B34E34E1F7561D50018A640 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		6B34E3501F756A960018A640 /* MealDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealDetailsViewController.swift; sourceTree = "<group>"; };
 		6B401FC81F5E83C200FAAF12 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		6B401FCA1F5E845E00FAAF12 /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		6B401FCD1F5E85BD00FAAF12 /* ProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
@@ -121,12 +127,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6B2C2E311F5A9D920049CCBC /* Food */ = {
+		6B2C2E311F5A9D920049CCBC /* Food Group */ = {
 			isa = PBXGroup;
 			children = (
+				6B34E34D1F75614C0018A640 /* Views */,
+				6B34E34C1F7561380018A640 /* Model */,
 				6B2C2E321F5A9DAD0049CCBC /* FoodViewController.swift */,
 			);
-			name = Food;
+			name = "Food Group";
+			sourceTree = "<group>";
+		};
+		6B34E34C1F7561380018A640 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6B34E34E1F7561D50018A640 /* Product.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6B34E34D1F75614C0018A640 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		6B401FCC1F5E84E900FAAF12 /* Network */ = {
@@ -136,6 +159,7 @@
 				6B401FCA1F5E845E00FAAF12 /* Database.swift */,
 				6B401FCD1F5E85BD00FAAF12 /* ProfileManager.swift */,
 				6B401FC81F5E83C200FAAF12 /* NetworkManager.swift */,
+				6B20F91C1F62EC0200CF0DD0 /* NotificationManager.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -174,8 +198,8 @@
 				6B401FCC1F5E84E900FAAF12 /* Network */,
 				6BE0EFD21F5AD194007D8764 /* Login */,
 				6B56CD131F3C5F5400F56C98 /* RootViewController.swift */,
-				6B2C2E311F5A9D920049CCBC /* Food */,
-				6B5911331F5859080050F983 /* Profile */,
+				6B2C2E311F5A9D920049CCBC /* Food Group */,
+				6B5911331F5859080050F983 /* Profile Group */,
 				6BE5A7FB1F4B3C7F00FD1E84 /* Meals group */,
 				6BE5A7F41F4B394D00FD1E84 /* Dishes group */,
 				6BE5A7F31F4B37AE00FD1E84 /* Products group  */,
@@ -206,14 +230,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		6B5911331F5859080050F983 /* Profile */ = {
+		6B5911331F5859080050F983 /* Profile Group */ = {
 			isa = PBXGroup;
 			children = (
 				6B56CD151F3C67E900F56C98 /* ProfileViewController.swift */,
 				6B609AD51F5959FF004124C6 /* UserViewController.swift */,
 				6B401FCF1F5F175000FAAF12 /* EditUserViewController.swift */,
 			);
-			name = Profile;
+			name = "Profile Group";
 			sourceTree = "<group>";
 		};
 		6BE0EFCC1F5AC51B007D8764 /* Views */ = {
@@ -261,6 +285,9 @@
 		6BE5A7F41F4B394D00FD1E84 /* Dishes group */ = {
 			isa = PBXGroup;
 			children = (
+				6BE5A7F91F4B3C7400FD1E84 /* MealListViewController.swift */,
+				6B8BFE461F4491AA00CD5721 /* MealComposerViewController.swift */,
+				6B8BFE421F4443A000CD5721 /* DayScheduleViewController.swift */,
 				6BE5A7F51F4B397700FD1E84 /* DishListViewController.swift */,
 				6BE5A7F71F4B3B7C00FD1E84 /* DishComposerViewController.swift */,
 			);
@@ -272,10 +299,8 @@
 			children = (
 				6BE0EFCF1F5AC9E4007D8764 /* Models */,
 				6BE0EFCC1F5AC51B007D8764 /* Views */,
-				6BE5A7F91F4B3C7400FD1E84 /* MealListViewController.swift */,
-				6B8BFE461F4491AA00CD5721 /* MealComposerViewController.swift */,
-				6B8BFE421F4443A000CD5721 /* DayScheduleViewController.swift */,
 				6BE0EFCA1F5AAE12007D8764 /* MealViewController.swift */,
+				6B34E3501F756A960018A640 /* MealDetailsViewController.swift */,
 			);
 			name = "Meals group";
 			sourceTree = "<group>";
@@ -407,6 +432,7 @@
 			files = (
 				6B5911351F587A5A0050F983 /* CustomNavigationBar.swift in Sources */,
 				6B8BFE471F4491AA00CD5721 /* MealComposerViewController.swift in Sources */,
+				6B34E3511F756A960018A640 /* MealDetailsViewController.swift in Sources */,
 				6BCF014C1F45E6390041224C /* Storage.swift in Sources */,
 				6BCF014E1F45F5000041224C /* ProductComposerViewController.swift in Sources */,
 				6BE1A5921F472F19001BD851 /* Utils.swift in Sources */,
@@ -423,6 +449,7 @@
 				6B401FD01F5F175000FAAF12 /* EditUserViewController.swift in Sources */,
 				6BE0EFD11F5ACA14007D8764 /* MealDay.swift in Sources */,
 				6BE5A7F61F4B397700FD1E84 /* DishListViewController.swift in Sources */,
+				6B20F91D1F62EC0200CF0DD0 /* NotificationManager.swift in Sources */,
 				6BE0EFCE1F5AC533007D8764 /* MealHeaderView.swift in Sources */,
 				6BE1A5901F470496001BD851 /* CustomInput.swift in Sources */,
 				6BE5A7FA1F4B3C7400FD1E84 /* MealListViewController.swift in Sources */,
@@ -431,6 +458,7 @@
 				6B56CD191F3C72CE00F56C98 /* Profile.swift in Sources */,
 				6B56CD001F3C562400F56C98 /* AppDelegate.swift in Sources */,
 				6B4849021F5086770008D4E2 /* Model.xcdatamodeld in Sources */,
+				6B34E34F1F7561D50018A640 /* Product.swift in Sources */,
 				6B4849181F508A910008D4E2 /* Day.swift in Sources */,
 				6B401FCB1F5E845E00FAAF12 /* Database.swift in Sources */,
 				6B401FCE1F5E85BD00FAAF12 /* ProfileManager.swift in Sources */,
@@ -485,9 +513,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = PVDZWY67J6;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -536,9 +566,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PVDZWY67J6;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -563,11 +595,15 @@
 			baseConfigurationReference = 4D01B6A3A6002060ED79D518 /* Pods-PickMe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = PVDZWY67J6;
 				INFOPLIST_FILE = PickMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qarea.pickme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -577,11 +613,15 @@
 			baseConfigurationReference = 588058AB037B65F29CA5396C /* Pods-PickMe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = PVDZWY67J6;
 				INFOPLIST_FILE = PickMe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qarea.pickme;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
